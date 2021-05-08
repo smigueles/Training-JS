@@ -12,19 +12,49 @@ import { test_ejercicio1 } from "./tests.js";
 
 // Ejercicio 1:
 const sumatoria = (a) => {
-  return 0;
+  let count = 0;
+  for (let i = 0; i < a.length; i++) {
+    count += a[i];
+  }
+  return count;
 };
 
 const reverso = (a) => {
-  return [];
+  return a.reverse();
 };
 
 const rotaciones = (a, n) => {
-  return a;
+  const newA = [];
+  let time = 0;
+  if (a.length !== 0) {
+    while (time < n) {
+      newA.push(a.shift());
+      time++;
+    }
+    return a.concat(newA);
+  } else {
+    return a;
+  }
 };
 
 const mesetaMasLarga = (a) => {
-  return 0;
+  let cont = [];
+  let total = 1;
+  let max;
+  if (a.length !== 0) {
+    for (let i = 0; i < a.length; i++) {
+      if (i < a.length - 1 && a[i] == a[i + 1]) {
+        total++;
+      } else {
+        cont.push(total);
+        total = 1;
+      }
+    }
+    max = Math.max(...cont);
+    return max;
+  } else {
+    return 0;
+  }
 };
 
 test_ejercicio1(sumatoria, reverso, mesetaMasLarga, rotaciones);

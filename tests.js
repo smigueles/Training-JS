@@ -1,4 +1,4 @@
-import { faux1, faux2, faux3 } from "./aux.js";
+import { faux1, faux2, faux3 } from "./aux1.js";
 
 export const testFunction = function (func, inputs, check) {
   const result = func.apply(this, inputs);
