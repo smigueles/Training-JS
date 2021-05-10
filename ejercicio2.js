@@ -14,12 +14,7 @@ const f1 = (arr = []) => {
 };
 
 // Para probar esta funcion podes usar faux1 y faux2 definidas en Aux.js
-const f2 = (
-  a = [],
-  func = function () {
-    console.log("Give me a function");
-  }
-) => {
+const f2 = (a = [], func) => {
   const array = [];
   if (a.lenght !== 0) {
     for (let i = 0; i < a.length; i++) {
@@ -46,7 +41,7 @@ const f3 = (a = [], n = 0) => {
 };
 
 // Para probar esta funcion podes usar faux3 definida en Aux.js
-const f4 = (a, func) => {
+const f4 = (a = [], func) => {
   const newA = [];
   if (a.length !== 0) {
     for (let i = 0; i < a.length; i++) {
@@ -60,7 +55,7 @@ const f4 = (a, func) => {
   }
 };
 
-const f5 = (a, n) => {
+const f5 = (a = [], n = 0) => {
   let value = [];
   if (a.length !== 0) {
     for (let i = 0; i < a.length; i++) {

@@ -1,5 +1,12 @@
 // Ejercicio 3:
 import { test_ejercicio3 } from "./tests.js";
+import {
+  column,
+  diagonal,
+  trueDiagonal,
+  arrayCopier,
+  correctOrder,
+} from "./aux1.js";
 
 // No te preocupes por la complejidad temporal de estas funciones
 const maximo = (M = [[]]) => {
@@ -35,64 +42,18 @@ const multiplicarMatrices = (M = [[]], W = [[]]) => {
   return multiplicacion;
 };
 
-const column = (M = [[]]) => {
-  const aColumn = [];
-  for (let i = 0; i < M.length; i++) {
-    aColumn.push(M[i][0]);
-  }
-  return aColumn;
-};
-
-const arrayCopier = (M = [[]], i = 0) => {
-  const copy = [];
-  for (let x = 0; x < M[i].length; x++) {
-    copy[x] = M[i][x];
-  }
-  return copy;
-};
-
-const correctOrder = (a = []) => {
-  return a.sort((a, b) => {
-    return a - b;
-  });
-};
-
-const diagonal = (M = [[]]) => {
-  const arrAux = [];
-  for (let x = 0; x < M.length; x++) {
-    for (let y = 0; y < M[x].length; y++) {
-      if (x === y) {
-        arrAux.push(M[x][y]);
-      }
-    }
-  }
-  return arrAux;
-};
-
-const diagonalIsTrue = (a = []) => {
-  for (let i = 0; i < a.length - 1; i++) {
-    if (a[i] !== a[i + 1]) {
-      return false;
-    }
-  }
-  return true;
-};
-
-const esDegrade = (M = [[]]) => {
+const esDegrade = (M) => {
   if (M[0].length === 0) return true;
   if (M[0].length !== 0) {
-    const arrayDiagonal = diagonal(M);
-    if (diagonalIsTrue(arrayDiagonal)) {
-      if (arrayDiagonal.length === 1 && M.length > 1) {
-        const oneColumn = column(M);
-
-        M[0] = oneColumn;
+    if (trueDiagonal(M)) {
+      if (diagonal(M).length === 1 && M.length > 1) {
+        M[0] = column(M);
       }
       for (let i = 0; i < M.length; i++) {
-        const arrayCopy = arrayCopier(M, i);
-        let arrayOrden = correctOrder(M[i]);
-        for (let i = 0; i < arrayCopy.length; i++) {
-          if (arrayCopy[i] !== arrayOrden[i]) {
+        const arrayAux = arrayCopier(M, i);
+        const orderedArray = correctOrder(M[i]);
+        for (let i = 0; i < arrayAux.length; i++) {
+          if (arrayAux[i] !== orderedArray[i]) {
             return false;
           }
         }

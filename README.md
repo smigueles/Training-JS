@@ -72,7 +72,7 @@ Por ejemplo: La siguiente matriz es un degrade:
 [[4, 6, 8, 19]
 [2, 4, 9, 40]
 [1, 2, 4, 10]
-[-2,0, 2, 4 ]]
+[-2,0, 2, 4]]
 La matriz vacia es considerada un degrade.
 
 ### esDamero: (Tablero) => bool
