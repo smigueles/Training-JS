@@ -20,7 +20,13 @@ const sumatoria = (a) => {
 };
 
 const reverso = (a) => {
-  return a.reverse();
+  for(let i=0; i < a.length / 2; i++){
+    let temp = a[i]
+    let invertedIndex = a.length - i - 1
+    a[i] = a[invertedIndex]
+    a[invertedIndex] = temp
+  }
+  return a
 };
 
 const rotaciones = (a, n) => {

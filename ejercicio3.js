@@ -52,8 +52,8 @@ const esDegrade = (M) => {
       for (let i = 0; i < M.length; i++) {
         const arrayAux = arrayCopier(M, i);
         const orderedArray = correctOrder(M[i]);
-        for (let i = 0; i < arrayAux.length; i++) {
-          if (arrayAux[i] !== orderedArray[i]) {
+        for (let j = 0; j < arrayAux.length; j++) {
+          if (arrayAux[j] !== orderedArray[j]) {
             return false;
           }
         }
@@ -71,7 +71,7 @@ const esDamero = (M = [[]]) => {
 
   for (let x = 0; x < M.length; x++) {
     for (let y = 0; y < M[x].length; y++) {
-      if (M[0][x] === M[1][x]) return false;
+      if (M[x][y] === M[x +1][y]) return false;
       else return true;
     }
   }
