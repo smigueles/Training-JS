@@ -5,6 +5,7 @@ const task = new Promise((res, rej) => {
     { service: "Agua", id: "00056ABa753951", amount: 100 },
     { service: "Luz", id: "00057ABa753951", amount: 600 },
     { service: "Gas", id: "00058ABa753951", amount: 600 },
+    { service: "Gas", id: "00059ABa753951", amount: 900 },
   ];
   setTimeout(() => {
     res(docs);
@@ -16,8 +17,9 @@ const render = (template, node) => {
   node.innerHTML = typeof template === "function" ? template() : template;
 };
 
+const main = "<h1 id='title'>Factuweb</h1><h3 id='subtitle'>Tus facturas en la web</h3>"
 render(
-  "<h1 id='title'>Factuweb</h1><h3 id='subtitle'>Tus facturas en la web</h3>",
+  main,
   document.querySelector("#main")
 );
 
@@ -28,7 +30,6 @@ task.then((res) => {
     i.recharge = calculateInterest(i.amount);
   });
   min = Math.min(...invoice.map((i) => i.amount));
-  console.log(min);
   return render(createTable(invoice), document.querySelector("#invoice"));
 });
 
@@ -39,15 +40,19 @@ const calculateInterest = (amount) => {
 };
 
 const createTable = (array) => {
-  const trTd = array.map(
-    (bill) =>
-      `<tr><td> ${bill.service}</td><td>${bill.id}</td><td>${bill.amount}</td><td>${bill.recharge}</td></tr>`
-  );
+  const trTd = array
+    .map(
+      (bill) =>
+        `<tr>
+        <td> ${bill.service}</td><td>${bill.id}</td><td>$${bill.amount}</td><td>$${bill.recharge}</td>
+      </tr>`
+    )
+    .join("");
 
   const table = `<table>
   <tr>
    <th>Servicio</th>
-   <th>Nro</th>
+   <th>ID</th>
    <th>Monto</th>
    <th>Recargo por vencimiento</th>
   </tr>
@@ -81,7 +86,7 @@ btn.addEventListener("click", () =>
   render(
     amount >= min
       ? createTable(aviableInvoice(amount))
-      : "<h4>El monto es insuficiente</h4>",
+      : "<h4>El monto es insuficiente para pagar alguna factura</h4>",
     document.querySelector("#aviable-invoice")
   )
 );

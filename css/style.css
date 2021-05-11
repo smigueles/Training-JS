@@ -23,23 +23,23 @@ body {
 }
 
 #btn {
-    margin: 5px;
-    border: 1px solid;
-    border-radius: 15px;
-    background-color:#00C899;
+  margin: 5px;
+  border: 1px solid;
+  border-radius: 15px;
+  background-color: #00c899;
 }
 
 #btn:hover {
-    background-color: #00754E;
-    color: #E7C2DE;
+  background-color: #00754e;
+  color: #e7c2de;
 }
 
 table {
   table-layout: fixed;
   width: 100%;
   border-collapse: collapse;
-  border: 3px solid purple;
-  background-color: #ff33cc;
+  border: 3px solid #e7c2de;
+  background-color: #e9b994;
   margin: 10px;
 }
 
@@ -65,17 +65,11 @@ th {
 
 td {
   letter-spacing: 1px;
+  padding: 20px;
 }
 
 tbody td {
   text-align: center;
-}
-
-tfoot th {
-  text-align: right;
-}
-td {
-  padding: 20px;
 }
 
 tbody tr:nth-child(odd) {

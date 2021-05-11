@@ -20,13 +20,13 @@ const sumatoria = (a) => {
 };
 
 const reverso = (a) => {
-  for(let i=0; i < a.length / 2; i++){
-    let temp = a[i]
-    let invertedIndex = a.length - i - 1
-    a[i] = a[invertedIndex]
-    a[invertedIndex] = temp
+  for (let i = 0; i < a.length / 2; i++) {
+    let temp = a[i];
+    let invertedIndex = a.length - i - 1;
+    a[i] = a[invertedIndex];
+    a[invertedIndex] = temp;
   }
-  return a
+  return a;
 };
 
 const rotaciones = (a, n) => {
@@ -46,18 +46,16 @@ const rotaciones = (a, n) => {
 const mesetaMasLarga = (a) => {
   let cont = [];
   let total = 1;
-  let max;
   if (a.length !== 0) {
-    for (let i = 0; i < a.length; i++) {
-      if (i < a.length - 1 && a[i] == a[i + 1]) {
+    for (let i = 0; i < a.length - 1; i++) {
+      if (a[i] == a[i + 1]) {
         total++;
       } else {
         cont.push(total);
         total = 1;
       }
     }
-    max = Math.max(...cont);
-    return max;
+    return Math.max(...cont);
   } else {
     return 0;
   }
