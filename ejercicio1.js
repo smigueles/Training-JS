@@ -50,15 +50,14 @@ const mesetaMasLarga = (a) => {
     for (let i = 0; i < a.length - 1; i++) {
       if (a[i] == a[i + 1]) {
         total++;
-      } else {
+      } else{
         cont.push(total);
-        total = 1;
+        total = 1
       }
     }
     return Math.max(...cont);
-  } else {
-    return 0;
   }
+  return 0;
 };
 
 test_ejercicio1(sumatoria, reverso, mesetaMasLarga, rotaciones);

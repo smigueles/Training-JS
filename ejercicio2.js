@@ -8,22 +8,20 @@ const f1 = (arr = []) => {
       newArr.push(Math.trunc(arr[i] / 2));
     }
     return newArr;
-  } else {
-    return arr;
   }
+  return arr;
 };
 
 // Para probar esta funcion podes usar faux1 y faux2 definidas en Aux.js
 const f2 = (a = [], func) => {
-  const array = [];
+  let newA = [];
   if (a.lenght !== 0) {
     for (let i = 0; i < a.length; i++) {
-      array.push(func(a[i]));
+      newA.push(func(a[i]));
     }
-    return array;
-  } else {
-    return [];
+    return newA;
   }
+  return a;
 };
 
 const f3 = (a = [], n = 0) => {
@@ -35,9 +33,8 @@ const f3 = (a = [], n = 0) => {
       }
     }
     return newA;
-  } else {
-    return [];
   }
+  return [];
 };
 
 // Para probar esta funcion podes usar faux3 definida en Aux.js
@@ -50,9 +47,8 @@ const f4 = (a = [], func) => {
       }
     }
     return newA;
-  } else {
-    return [];
   }
+  return [];
 };
 
 const f5 = (a = [], n = 0) => {
@@ -65,7 +61,8 @@ const f5 = (a = [], n = 0) => {
     }
 
     return value.shift();
-  } else return -1;
+  }
+  return -1;
 };
 
 // Para probar esta funcion podes usar faux3 definida en Aux.js
