@@ -26,32 +26,19 @@ const ordenarPorId = (arrObj) => {
 // Usa los menues de referencia (menu1 y menu2)
 const imprimirArbol = (menu) => {
   return menu.map((option) => {
-    console.log(
-      `Option: ${option.title} \n ${
-        option.onSelected
-      } \n ${option.subOptions.map(
-        (subO, i) =>
-          `Sub Opcion ${i + 1}: ${subO.title} \n ${subO.subOptions.map(
-            (subO, i) =>
-              `SubSub ${i + 1}: ${subO.title} \n ${subO.subOptions.map(
-                (subO, i) => `SubSubSub ${i}: ${subO.title} `
-              )}`
-          )}`
-      )}`
-    );
+    console.log(`Option: ${option.title} \n ${option.onSelected}`);
+    return imprimirArbol(option.subOptions);
   });
-};
+}; //recursividad
 
 // Usa el menu de referencia (menu3)
 const primerElemento = (menu) => {
-  const firstFilter = menu.find((o) => o.visible === true);
-  const secondFilter = firstFilter.subOptions.find(
-    (subO) => subO.visible === true
-  );
-  const thirdFilter = secondFilter.subOptions.find(
-    (subO) => subO.visible === true
-  );
-  return thirdFilter;
+  menu.forEach((option) => {
+    if (option.visible) {
+      console.log(option);
+      primerElemento(option.subOptions);
+    }
+  });
 };
 
 // Para este ejrcicio no hay tests automaticos :O
