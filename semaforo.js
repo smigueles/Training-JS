@@ -27,13 +27,16 @@ function Semaphore() {
     process.then((res) => {
       console.log(res);
       this.down();
-      if (this.queuedProcesses.length > 0) {
-        const nextProcess = this.queuedProcesses.shift();
-        this.exec(nextProcess);
-      } else {
-        console.log("All processes were terminated");
-      }
+      this.repeat();
     });
+  };
+  this.repeat = function () {
+    if (this.queuedProcesses.length > 0) {
+      const nextProcess = this.queuedProcesses.shift();
+      this.runTask(nextProcess);
+    } else {
+      console.log("All processes were terminated");
+    }
   };
   this.runTask = function (task) {
     if (this.inProgress < 1) {
