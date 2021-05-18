@@ -32,13 +32,14 @@ const imprimirArbol = (menu) => {
 }; //recursividad
 
 // Usa el menu de referencia (menu3)
-const primerElemento = (menu) => {
+const primerElemento1 = (menu) => {
+  let el;
   menu.forEach((option) => {
     if (option.visible) {
-      console.log(option);
-      primerElemento(option.subOptions);
+      el = primerElemento(option.subOptions);
     }
   });
+  return el;
 };
 
 // Para este ejrcicio no hay tests automaticos :O
